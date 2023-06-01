@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Terricon\Forum\Tests\Infrastructure\Routing;
 
 use Ramsey\Uuid\Uuid;
+use Terricon\Forum\Infrastructure\Routing\Exception\MethodNotAllowedException;
+use Terricon\Forum\Infrastructure\Routing\Exception\RouteNotFoundException;
 use Terricon\Forum\Infrastructure\Routing\RouteInterface;
 use Terricon\Forum\Infrastructure\Routing\RouterInterface;
 
@@ -20,7 +22,8 @@ trait RouterTestTrait
         foreach ($this->getRouterConfig() as $allowedRoute) {
             $testingUri = $this->getTestingRequestUri($allowedRoute);
             foreach ($allowedRoute['method'] as $method) {
-                self::assertInstanceOf(RouteInterface::class, $router->getRoute($testingUri, $method));
+                $actualRoute = $router->getRoute($testingUri, $method);
+                self::assertInstanceOf(RouteInterface::class, $actualRoute);
             }
         }
     }

@@ -5,7 +5,9 @@ declare(strict_types=1);
 use Terricon\Forum\Application\Controller\DefaultController;
 use Terricon\Forum\Application\Controller\ForumController;
 
-$uuidRegExp = '\b([A-F 0-9]{8})-([A-F 0-9]{4})-([A-F 0-9]{4})-([A-F 0-9]{4})-([A-F 0-9]{12})\b';
+/*$uuidRegExp = '/([A-F 0-9]{8})-([A-F 0-9]{4})-([A-F 0-9]{4})-([A-F 0-9]{4})-([A-F 0-9]{12})/';*/
+$uuidRegExp = '/[0-9]/';
+$pageCount = '/[0-9]/';
 
 return [
     [
@@ -36,7 +38,7 @@ return [
         'path' => '/topic/show/{UUID}/page/{N}',
         'parameters' => [
             'UUID' => $uuidRegExp, // UUID v4
-            'N' => '\d+',
+            'N' => $pageCount,
         ],
         'handler' => [
             'controller' => ForumController::class,
