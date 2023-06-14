@@ -10,7 +10,7 @@ class TopicMessage implements IdentityInterface
     private \DateTimeImmutable $createdAt;
 
     public function __construct(
-        public readonly User $author,
+        public readonly UserInterface $author,
         private string $text,
         private ?Topic $topic = null
     ) {
