@@ -23,11 +23,11 @@ class ForumController
         foreach ($lastTopics as $topic) {
             $resultArray[] = [
                 'topic' => $topic,
-                'url' => $this->router->generateUri('app.topic.show', ['UUID' => $topic->getId()])
+                'url' => $this->router->generateUri('app.topic.show', ['UUID' => $topic->getId()]),
             ];
-      }
+        }
 
-      $this->templatingEngine->render('topic_list.html', ['items' => $resultArray]);
+        $this->templatingEngine->render('topic_list.html', ['items' => $resultArray]);
     }
 
     public function showTopic(string $UUID, int|string $PageNumber = 1): void

@@ -9,4 +9,5 @@ interface TemplatingEngineInterface
     public function render(string $template, array $parameters = []): void;
 
     public function renderView(string $template, array $parameters = []): string;
+    
 }

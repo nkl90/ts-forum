@@ -11,4 +11,5 @@ interface TopicRepositoryInterface
     public function persist(Topic $topic): array;
 
     public function findLastCreatedTopics(int $limit): array;
+    
 }
