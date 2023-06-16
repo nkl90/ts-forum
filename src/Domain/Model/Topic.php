@@ -11,14 +11,10 @@ class Topic implements IdentityInterface
 
     public function __construct(
         private string $name,
-        string $message,
-        User $author
+        TopicMessage $firstMessage
     ) {
-        $this->messages[] = new TopicMessage(
-            author: $author,
-            text: $message,
-            topic: $this
-        );
+        $firstMessage->setTopic($this);
+        $this->messages[] = $firstMessage;
     }
 
     public function getName(): string
@@ -37,4 +33,5 @@ class Topic implements IdentityInterface
 
         return $this;
     }
+
 }

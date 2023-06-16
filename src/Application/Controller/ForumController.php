@@ -4,14 +4,17 @@ declare(strict_types=1);
 
 namespace Terricon\Forum\Application\Controller;
 
+use Terricon\Forum\Application\SecurityDictionary;
 use Terricon\Forum\Application\TemplatingEngineInterface;
 use Terricon\Forum\Domain\Model\TopicRepositoryInterface;
+use Terricon\Forum\Infrastructure\Security\Security;
 
 class ForumController
 {
     public function __construct(
         private readonly TopicRepositoryInterface $topicRepository,
-        private readonly TemplatingEngineInterface $templatingEngine
+        private readonly TemplatingEngineInterface $templatingEngine,
+        private readonly Security $security,
     ) {
     }
 
@@ -30,13 +33,26 @@ class ForumController
         $this->templatingEngine->render('topic_list.html', ['items' => $resultArray]);
     }
 
-    public function showTopic(string $UUID, int|string $PageNumber = 1): void
+    public function showTopic(string $UUID, int|string $PageNumber = null): void
     {
-        echo __METHOD__;
+        if (!empty($UUID) && !is_null($PageNumber)) {
+            $this->topicRepository->getById($UUID);
+            $this->templatingEngine->render('show_topic.html', [
+                'UUID' => $UUID,
+                'PageNumber' => $PageNumber,
+            ]);
+        } elseif (!empty($UUID) && is_null($PageNumber)) {
+            $this->topicRepository->getById($UUID);
+            $this->templatingEngine->render('show_topic.html', [
+                'UUID' => $UUID,
+            ]);
+        }
     }
 
     public function createTopic(): void
     {
+        $user = $this->security->getUser();
+        $this->security->isGranted(SecurityDictionary::PERMISSION_CREATE_TOPIC, $user);
         echo __METHOD__;
     }
 

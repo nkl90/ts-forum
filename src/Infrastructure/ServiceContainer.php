@@ -19,11 +19,12 @@ class ServiceContainer
                 || $registeredService['class'] == $fqdnOrServiceName
             ) {
                 $arguments = [];
-                if(isset($registeredService['arguments'])) {
+                if (isset($registeredService['arguments'])) {
                     foreach ($registeredService['arguments'] as $argument) {
                         $arguments[] = $this->getInstanceOf($argument);
                     }
                 }
+
                 return new ($registeredService['class'])(...$arguments);
             }
         }

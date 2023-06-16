@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Terricon\Forum\Tests\Infrastructure\Routing\NklRouting;
+namespace Terricon\Forum\Tests\Infrastructure\Routing\SergeiRouting;
 
 use PHPUnit\Framework\TestCase;
-use Terricon\Forum\Infrastructure\NklRouting\Router;
 use Terricon\Forum\Infrastructure\Routing\RouterInterface;
 use Terricon\Forum\Tests\Infrastructure\Routing\RouterTestTrait;
+use Terricon\Forum\Infrastructure\SergeiRouting\Router;
 
-final class NklRouterTest extends TestCase
+class SergeiRouterTest extends TestCase
 {
     use RouterTestTrait;
     private RouterInterface $router;
@@ -27,7 +27,6 @@ final class NklRouterTest extends TestCase
             $this->getRouterConfig(),
         );
     }
-
     public function getTestingRouter(): RouterInterface
     {
         return $this->router;
@@ -36,15 +35,5 @@ final class NklRouterTest extends TestCase
     public function getRouterConfig(): array
     {
         return $this->config;
-    }
-
-    public function testGetRoute(): void
-    {
-        self::markTestIncomplete('This test has not been implemented yet.');
-    }
-
-    public function testGenerateUriSuccess(): void
-    {
-        self::markTestIncomplete('This test has not been implemented yet.');
     }
 }

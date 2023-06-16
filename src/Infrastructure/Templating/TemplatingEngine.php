@@ -9,7 +9,7 @@ use Terricon\Forum\Application\TemplatingEngineInterface;
 class TemplatingEngine implements TemplatingEngineInterface
 {
     public function __construct(
-        private readonly string $templateDirectory = __DIR__ . '/../Resources/templates/'
+        private readonly string $templateDirectory = __DIR__.'/../Resources/templates/'
     ) {
     }
 

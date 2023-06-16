@@ -12,8 +12,15 @@ class TopicMessage implements IdentityInterface
     public function __construct(
         public readonly User $author,
         private string $text,
-        private readonly Topic $topic
+        private ?Topic $topic = null
     ) {
         $this->createdAt = new \DateTimeImmutable('now');
+    }
+
+    public function setTopic(Topic $topic): self
+    {
+        $this->topic = $topic;
+
+        return $this;
     }
 }

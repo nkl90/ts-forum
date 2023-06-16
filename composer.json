@@ -38,6 +38,9 @@
         ],
         "fix:cs": [
             "php-cs-fixer fix --config=.php-cs-fixer.php"
+        ],
+        "db:migrate": [
+            "bin/console.php"
         ]
     }
 }

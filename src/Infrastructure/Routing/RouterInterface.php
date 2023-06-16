@@ -23,10 +23,10 @@ interface RouterInterface
      * @param string $uri    - URI запроса
      * @param string $method - метод запроса (GET, POST, PUT, DELETE)
      *
+     * @return RouteInterface - объект маршрута
+     *
      * @throws RouteNotFoundException
      * @throws MethodNotAllowedException
-     *
-     * @return RouteInterface - объект маршрута
      */
     public function getRoute(string $uri, string $method): RouteInterface;
 
