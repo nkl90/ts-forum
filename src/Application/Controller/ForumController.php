@@ -44,8 +44,7 @@ class ForumController
 
     public function createTopic(): void
     {
-        $user = $this->security->getUser();
-        $this->security->isGranted(SecurityDictionary::PERMISSION_CREATE_TOPIC, $user);
+        $this->templatingEngine->render('create_topic.html');
         echo __METHOD__;
     }
 
