@@ -47,7 +47,8 @@ class InMemoryTopicRepository implements TopicRepositoryInterface
             firstMessage: new TopicMessage(
                 author: $user1,
                 text: 'Первый ответ на топик',
-        ));
+            )
+        );
 
         $topic->addMessage(new TopicMessage(
             author: $user1,
